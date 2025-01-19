@@ -1,16 +1,27 @@
-/* Background putih untuk seluruh halaman */
+/* Background dan body */
 body {
-  background-color: #ffffff; /* Warna putih */
-  color: #000000; /* Warna teks hitam */
+  background-color: #ffffff; /* Background putih */
+  color: #000; /* Teks warna hitam */
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* Style untuk card/form */
+/* Logo besar di atas */
+.logo {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.logo img {
+  max-width: 300px;
+  height: auto;
+}
+
+/* Card styling */
 .card {
   background-color: #f8f9fa; /* Warna abu muda */
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
   margin: 20px auto;
@@ -19,49 +30,35 @@ body {
   text-align: center;
 }
 
-/* Style untuk input field */
-input {
-  display: block;
-  width: calc(100% - 20px); /* Sesuaikan lebar */
-  margin: 10px auto;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
+.card h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
 }
 
-/* Style untuk tombol */
-button {
-  background-color: #ff4747; /* Warna merah */
-  color: #ffffff; /* Warna teks putih */
+.card input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.card button {
+  background-color: #ff4747; /* Tombol merah */
+  color: #fff;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 10px;
 }
 
-button:hover {
-  background-color: #e63939; /* Warna merah lebih gelap saat hover */
+.card button:hover {
+  background-color: #e63939;
 }
 
-/* Style untuk gambar/logo */
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 20px auto;
-}
-
-/* Style untuk video jumpscare */
+/* Video styling */
 video {
   display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  background-color: black;
-    }
+}
