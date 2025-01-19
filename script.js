@@ -1,37 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const buttons = document.querySelectorAll(".trigger-jumpscare"); // Tombol "Ambil Robux" atau sejenisnya
+  const buttons = document.querySelectorAll(".trigger-jumpscare"); // Tombol trigger
   const video = document.getElementById("jumpscare-video");
 
-  // Fungsi untuk memutar video jumpscare secara fullscreen
+  // Fungsi untuk memutar video jumpscare dalam fullscreen
   function playJumpscareFullscreen() {
     if (video.requestFullscreen) {
       video.requestFullscreen();
     } else if (video.mozRequestFullScreen) {
-      video.mozRequestFullScreen(); // Firefox
+      video.mozRequestFullScreen();
     } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen(); // Chrome, Safari, Opera
+      video.webkitRequestFullscreen();
     } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen(); // Internet Explorer/Edge
+      video.msRequestFullscreen();
     }
 
     // Memulai video
+    video.style.display = "block";
     video.play();
 
-    // Event untuk mengakhiri fullscreen setelah video selesai
+    // Keluar fullscreen setelah video selesai
     video.onended = function () {
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen(); // Firefox
+        document.mozCancelFullScreen();
       } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen(); // Chrome, Safari, Opera
+        document.webkitExitFullscreen();
       } else if (document.msExitFullscreen) {
-        document.msExitFullscreen(); // Internet Explorer/Edge
+        document.msExitFullscreen();
       }
+
+      video.style.display = "none"; // Sembunyikan video
     };
   }
 
-  // Menambahkan event listener pada tombol
+  // Event listener untuk tombol
   buttons.forEach((button) => {
     button.addEventListener("click", function () {
       playJumpscareFullscreen();
