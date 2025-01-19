@@ -1,26 +1,51 @@
-/* Tambahkan di file CSS Anda */
+/* Background dan body */
 body {
   background-color: #ffffff; /* Background putih */
-  color: #000; /* Warna teks hitam agar terlihat jelas */
+  color: #000; /* Teks warna hitam */
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* Style untuk card */
+/* Logo besar di atas */
+.logo {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.logo img {
+  max-width: 300px;
+  height: auto;
+}
+
+/* Card styling */
 .card {
-  background-color: #f8f9fa; /* Warna abu muda untuk card */
+  background-color: #f8f9fa; /* Warna abu muda */
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
   margin: 20px auto;
-  max-width: 400px; /* Batas lebar card */
+  max-width: 400px; /* Lebar maksimal card */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-/* Style untuk tombol */
-button {
-  background-color: #ff4747; /* Warna merah */
+.card h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.card input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.card button {
+  background-color: #ff4747; /* Tombol merah */
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -29,12 +54,11 @@ button {
   border-radius: 5px;
 }
 
-button:hover {
+.card button:hover {
   background-color: #e63939;
 }
 
-/* Logo besar */
-img {
-  max-width: 100%;
-  height: auto;
+/* Video styling */
+video {
+  display: none;
 }
