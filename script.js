@@ -1,43 +1,42 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const buttons = document.querySelectorAll(".trigger-jumpscare"); // Tombol trigger
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".trigger-jumpscare");
   const video = document.getElementById("jumpscare-video");
 
-  // Fungsi untuk memutar video jumpscare dalam fullscreen
-  function playJumpscareFullscreen() {
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.mozRequestFullScreen) {
-      video.mozRequestFullScreen();
-    } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen();
+  // Fungsi untuk meminta fullscreen di browser
+  function requestFullScreen(element) {
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      // Firefox
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+      // Chrome, Safari, Opera
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      // IE/Edge
+      element.msRequestFullscreen();
     }
-
-    // Memulai video
-    video.style.display = "block";
-    video.play();
-
-    // Keluar fullscreen setelah video selesai
-    video.onended = function () {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
-
-      video.style.display = "none"; // Sembunyikan video
-    };
   }
 
-  // Event listener untuk tombol
+  // Fungsi untuk memainkan jumpscare
+  function playJumpscare() {
+    if (video) {
+      video.style.display = "block"; // Tampilkan video
+      video.play(); // Mainkan video
+      requestFullScreen(video); // Minta fullscreen
+
+      // Hentikan jumpscare setelah video selesai
+      video.addEventListener("ended", () => {
+        video.style.display = "none"; // Sembunyikan video
+        document.exitFullscreen(); // Keluar dari fullscreen
+      });
+    }
+  }
+
+  // Tambahkan event listener ke semua tombol
   buttons.forEach((button) => {
-    button.addEventListener("click", function () {
-      playJumpscareFullscreen();
+    button.addEventListener("click", () => {
+      playJumpscare();
     });
   });
 });
