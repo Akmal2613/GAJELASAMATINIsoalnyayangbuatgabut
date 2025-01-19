@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gratis Semua</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gratis Semua</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="logo">
-    <img src="assets/roblox-logo.png" alt="Roblox Logo">
-  </div>
+    <div class="container">
+        <img src="assets/logo-gratissemua.png" alt="Logo Gratis Semua" class="logo">
 
-  <!-- Card untuk Roblox -->
-  <div class="card">
-    <h2>Roblox</h2>
-    <input type="text" placeholder="Masukan Username Roblox">
-    <input type="number" placeholder="Masukan Jumlah Robux">
-    <button class="trigger-jumpscare">Ambil Robux</button>
-  </div>
+        <div class="card" style="background-image: url('assets/background-roblox.jpg');">
+            <img src="assets/logo-roblox.png" alt="Roblox Logo" class="game-logo">
+            <input type="text" placeholder="Masukan Username Roblox" id="username-roblox">
+            <input type="number" placeholder="Masukan Jumlah Robux" id="amount-robux">
+            <button onclick="triggerJumpscare()">Ambil Robux</button>
+        </div>
 
-  <!-- Card untuk Free Fire -->
-  <div class="card">
-    <h2>Free Fire</h2>
-    <input type="text" placeholder="Masukan ID Akun Free Fire">
-    <input type="number" placeholder="Masukan Jumlah Diamond">
-    <button class="trigger-jumpscare">Ambil Diamond</button>
-  </div>
+        <div class="card" style="background-image: url('assets/background-ff.jpg');">
+            <img src="assets/logo-ff.png" alt="Free Fire Logo" class="game-logo">
+            <input type="text" placeholder="Masukan ID Akun Free Fire" id="id-freefire">
+            <input type="number" placeholder="Masukan Jumlah Diamond" id="amount-ff">
+            <button onclick="triggerJumpscare()">Ambil Diamond</button>
+        </div>
 
-  <!-- Card untuk Mobile Legends -->
-  <div class="card">
-    <h2>Mobile Legends</h2>
-    <input type="text" placeholder="Masukan Username Mobile Legends">
-    <input type="number" placeholder="Masukan Jumlah Diamond">
-    <button class="trigger-jumpscare">Ambil Diamond</button>
-  </div>
+        <div class="card" style="background-image: url('assets/background-ml.jpg');">
+            <img src="assets/logo-ml.png" alt="Mobile Legends Logo" class="game-logo">
+            <input type="text" placeholder="Masukan Username Mobile Legends" id="username-ml">
+            <input type="number" placeholder="Masukan Jumlah Diamond" id="amount-ml">
+            <button onclick="triggerJumpscare()">Ambil Diamond</button>
+        </div>
+    </div>
 
-  <!-- Video Jumpscare -->
-  <video id="jumpscare-video" src="assets/jumpscare.mp4" style="display: none;"></video>
+    <div class="jumpscare-container">
+        <video id="jumpscare-video" src="assets/jumpscare.mp4" controls></video>
+    </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
