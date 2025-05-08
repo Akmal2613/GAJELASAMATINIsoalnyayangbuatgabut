@@ -1,41 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gratis Semua</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Jumpscare</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            height: 100%;
+            overflow: hidden;
+        }
+        video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <img src="assets/logo-gratissemua.png" alt="Logo Gratis Semua" class="logo">
+    <video id="scareVideo" src="assets/jumpscare.mp4" type="video/mp4"></video>
 
-        <div class="card" style="background-image: url('assets/background-roblox.png');">
-            <img src="assets/logo-roblox.png" alt="Roblox Logo" class="game-logo">
-            <input type="text" placeholder="Masukan Username Roblox" id="username-roblox">
-            <input type="number" placeholder="Masukan Jumlah Robux" id="amount-robux">
-            <button onclick="triggerJumpscare()">Ambil Robux</button>
-        </div>
+    <script>
+        const video = document.getElementById("scareVideo");
 
-        <div class="card" style="background-image: url('assets/background-ff.png');">
-            <img src="assets/logo-ff.png" alt="Free Fire Logo" class="game-logo">
-            <input type="text" placeholder="Masukan ID Akun Free Fire" id="id-freefire">
-            <input type="number" placeholder="Masukan Jumlah Diamond" id="amount-ff">
-            <button onclick="triggerJumpscare()">Ambil Diamond</button>
-        </div>
+        async function startJumpscare() {
+            try {
+                video.volume = 1.0;
 
-        <div class="card" style="background-image: url('assets/background-ml.png');">
-            <img src="assets/logo-ml.png" alt="Mobile Legends Logo" class="game-logo">
-            <input type="text" placeholder="Masukan Username Mobile Legends" id="username-ml">
-            <input type="number" placeholder="Masukan Jumlah Diamond" id="amount-ml">
-            <button onclick="triggerJumpscare()">Ambil Diamond</button>
-        </div>
-    </div>
+                const elem = document.documentElement;
+                if (elem.requestFullscreen) await elem.requestFullscreen();
+                else if (elem.webkitRequestFullscreen) await elem.webkitRequestFullscreen();
+                else if (elem.mozRequestFullScreen) await elem.mozRequestFullScreen();
+                else if (elem.msRequestFullscreen) await elem.msRequestFullscreen();
 
-    <div class="jumpscare-container">
-        <video id="jumpscare-video" src="assets/jumpscare.mp4" controls></video>
-    </div>
+                await video.play();
+            } catch (err) {
+                console.error("Autoplay error:", err);
+            }
+        }
 
-    <script src="script.js"></script>
+        document.addEventListener("click", startJumpscare, { once: true });
+    </script>
 </body>
 </html>
