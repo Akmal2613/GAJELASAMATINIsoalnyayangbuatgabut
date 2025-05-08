@@ -21,13 +21,13 @@
       transform: translate(-50%, -50%);
       padding: 20px 40px;
       font-size: 24px;
-      background-color: #555; /* abu-abu */
+      background-color: #555;
       color: white;
       border: none;
       cursor: pointer;
       z-index: 2;
-      text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
       border-radius: 10px;
+      text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
     }
 
     video {
@@ -41,7 +41,6 @@
       object-fit: cover;
     }
 
-    /* Biar di HP video tetap full screen portrait */
     @media (orientation: portrait) {
       video {
         object-fit: contain;
@@ -52,7 +51,7 @@
 </head>
 <body>
   <button id="start-btn">Lanjutkan</button>
-  <video id="jumpscare" src="assets/jumpscare.mp4" autoplay></video>
+  <video id="jumpscare" src="assets/jumpscare.mp4" autoplay loop></video>
 
   <script>
     const btn = document.getElementById('start-btn');
@@ -60,21 +59,19 @@
 
     btn.addEventListener('click', async () => {
       // Minta fullscreen
-      const elem = video;
-      if (elem.requestFullscreen) {
-        await elem.requestFullscreen();
-      } else if (elem.webkitRequestFullscreen) {
-        await elem.webkitRequestFullscreen(); // Safari
-      } else if (elem.msRequestFullscreen) {
-        await elem.msRequestFullscreen(); // IE11
+      if (video.requestFullscreen) {
+        await video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        await video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        await video.msRequestFullscreen();
       }
 
-      // Atur volume maksimal dan mulai play
+      // Full volume dan play
       video.volume = 1.0;
       video.style.display = 'block';
       video.play();
 
-      // Sembunyikan tombol
       btn.style.display = 'none';
     });
   </script>
