@@ -1,63 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <title>Jumpscare</title>
   <style>
-    html, body {
+    body, html {
       margin: 0;
       padding: 0;
-      background: black;
       height: 100%;
+      background: black;
       overflow: hidden;
     }
 
-    #startBtn {
+    #start-btn {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 2rem;
       padding: 20px 40px;
-      background: red;
+      font-size: 24px;
+      background-color: red;
       color: white;
       border: none;
       cursor: pointer;
-      z-index: 10;
+      z-index: 2;
     }
 
     video {
       width: 100vw;
       height: 100vh;
       object-fit: cover;
+      position: fixed;
+      top: 0;
+      left: 0;
       display: none;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
-
-  <button id="startBtn">Klik untuk Lanjut</button>
-  <video id="scareVideo" src="assets/jumpscare.mp4" type="video/mp4" playsinline></video>
+  <button id="start-btn">Lanjutkan</button>
+  <video id="jumpscare" src="assets/jumpscare.mp4" autoplay></video>
 
   <script>
-    const btn = document.getElementById("startBtn");
-    const video = document.getElementById("scareVideo");
+    const btn = document.getElementById('start-btn');
+    const video = document.getElementById('jumpscare');
 
-    btn.addEventListener("click", async () => {
-      btn.style.display = "none";
-      video.style.display = "block";
+    btn.addEventListener('click', async () => {
+      // Minta fullscreen
+      if (video.requestFullscreen) {
+        await video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        await video.webkitRequestFullscreen(); // Safari
+      } else if (video.msRequestFullscreen) {
+        await video.msRequestFullscreen(); // IE11
+      }
 
-      // Fullscreen
-      const elem = document.documentElement;
-      if (elem.requestFullscreen) await elem.requestFullscreen();
-      else if (elem.webkitRequestFullscreen) await elem.webkitRequestFullscreen();
-      else if (elem.msRequestFullscreen) await elem.msRequestFullscreen();
+      // Atur volume penuh dan play
+      video.volume = 1.0;
+      video.style.display = 'block';
+      video.play();
 
-      // Set volume & play
-      video.volume = 1;
-      await video.play();
+      // Hilangkan tombol
+      btn.style.display = 'none';
     });
   </script>
-
 </body>
 </html>
