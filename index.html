@@ -19,34 +19,33 @@
     </style>
 </head>
 <body>
-    <video id="scareVideo" src="assets/jumpscare.mp4" type="video/mp4" muted></video>
+    <video id="scareVideo" src="assets/jumpscare.mp4" autoplay muted playsinline></video>
 
     <script>
         const video = document.getElementById("scareVideo");
 
-        // Function to trigger full screen and play video
-        async function startJumpscare() {
+        async function goFullscreenAndUnmute() {
             try {
-                // Minta fullscreen
+                // Fullscreen
                 const elem = document.documentElement;
                 if (elem.requestFullscreen) await elem.requestFullscreen();
                 else if (elem.webkitRequestFullscreen) await elem.webkitRequestFullscreen();
                 else if (elem.mozRequestFullScreen) await elem.mozRequestFullScreen();
                 else if (elem.msRequestFullscreen) await elem.msRequestFullscreen();
 
-                // Mute video (biar gak ada suara dulu)
-                video.volume = 1.0;
-
-                // Play video otomatis
-                await video.play();
-            } catch (err) {
-                console.error("Autoplay error:", err);
+                // Tunggu sebentar biar fullscreen benar-benar aktif
+                setTimeout(() => {
+                    video.muted = false;
+                    video.volume = 1.0;
+                    video.play();
+                }, 500);
+            } catch (e) {
+                console.error("Gagal fullscreen atau play:", e);
             }
         }
 
-        // Mulai setelah 1 detik (biar browser ngizinin autoplay)
-        window.onload = function() {
-            setTimeout(startJumpscare, 1000); // 1 detik delay sebelum autoplay
+        window.onload = () => {
+            goFullscreenAndUnmute();
         }
     </script>
 </body>
